@@ -2334,7 +2334,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   loadSound("wooosh", "sounds/wooosh.mp3");
   var highScore = 0;
   scene("game", () => {
-    const PIPE_GAP = 120;
+    const PIPE_GAP = 140;
     let score = 0;
     add([
       sprite("bg", { width: width(), height: height() })
@@ -2388,7 +2388,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     });
     keyPress("space", () => {
       play("wooosh");
-      player.jump(400);
+      player.jump(310);
     });
   });
   scene("gameover", (score) => {

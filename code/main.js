@@ -79,7 +79,7 @@ scene("game", () => {
 
   keyPress("space", () => {
     play("wooosh");
-    player.jump(250);
+    player.jump(310);
   });
 });
 
