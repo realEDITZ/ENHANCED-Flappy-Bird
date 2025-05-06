@@ -6,3 +6,7 @@ entrypoint = "code/main.js"
 language="nodejs"
 [packager.features]
 packageSearch = true
+
+[[ports]]
+localPort = 8000
+externalPort = 80

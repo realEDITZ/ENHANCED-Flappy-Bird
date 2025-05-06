@@ -12,7 +12,7 @@ loadSound("wooosh", "sounds/wooosh.mp3");
 let highScore = 0;
 
 scene("game", () => {
-  const PIPE_GAP = 120;
+  const PIPE_GAP = 140;
   let score = 0;
 
   add([
