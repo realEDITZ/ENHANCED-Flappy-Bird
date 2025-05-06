@@ -9,6 +9,7 @@ loadSprite("bg", "sprites/bg.png");
 loadSprite("pipe", "sprites/pipe.png");
 loadSound("wooosh", "sounds/wooosh.mp3");
 
+
 let highScore = 0;
 
 scene("game", () => {
