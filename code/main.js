@@ -7,8 +7,7 @@ kaboom();
 loadSprite("birdy", "sprites/birdy.png");
 loadSprite("bg", "sprites/bg.png");
 loadSprite("pipe", "sprites/pipe.png");
-loadSound("flap", "sounds/flap.wav");
-loadSound("score", "sounds/woosh (1).mp3");
+loadSound("wooosh", "sounds/wooosh.mp3");
 
 let highScore = 0;
 
@@ -65,7 +64,6 @@ scene("game", () => {
       pipe.passed = true;
       score += 1;
       scoreText.text = score;
-      play("score"); // Added this line to play the score sound
     }
   });
 
