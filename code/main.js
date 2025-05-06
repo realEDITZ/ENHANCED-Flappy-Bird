@@ -8,6 +8,7 @@ loadSprite("birdy", "sprites/birdy.png");
 loadSprite("bg", "sprites/bg.png");
 loadSprite("pipe", "sprites/pipe.png");
 loadSound("wooosh", "sounds/wooosh.mp3");
+loadSound("point", "sounds/point.mp3");
 
 
 let highScore = 0;
@@ -65,6 +66,7 @@ scene("game", () => {
       pipe.passed = true;
       score += 1;
       scoreText.text = score;
+      play("point");
     }
   });
 
