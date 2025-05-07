@@ -17,6 +17,7 @@ let highScore = 0;
 scene("game", () => {
   const PIPE_GAP = 140;
   let score = 0;
+  let gameSpeed = 160; // Initial speed
 
   add([
     sprite("bg", {width: width(), height: height()})
@@ -61,12 +62,13 @@ scene("game", () => {
   });
 
   action("pipe", (pipe) => {
-    pipe.move(-160, 0);
+    pipe.move(-gameSpeed, 0);
 
     if (pipe.passed === false && pipe.pos.x < player.pos.x) {
       pipe.passed = true;
       score += 1;
       scoreText.text = score;
+      gameSpeed += 10; // Increase speed with each point
       play("point");
     }
   });
