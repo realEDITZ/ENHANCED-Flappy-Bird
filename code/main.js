@@ -2,7 +2,7 @@ import kaboom from "kaboom";
 
 // initialize context
 kaboom({
-  scale: 1.5
+  scale: 1.3
 });
 
 // load assets
@@ -110,7 +110,7 @@ scene("gameover", (score) => {
       "gameover! press space to try again!\n"
       + "score: " + score
       + "\nhigh score: " + highScore,
-      {size: 45}
+      {size: 35}
     )
   ]);
 

@@ -2327,7 +2327,9 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   var kaboom_default = xn();
 
   // code/main.js
-  kaboom_default();
+  kaboom_default({
+    scale: 1.3
+  });
   loadSprite("birdy", "sprites/birdy.png");
   loadSprite("bg", "sprites/bg.png");
   loadSprite("pipe", "sprites/pipe.png");
@@ -2409,7 +2411,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       highScore = score;
     }
     add([
-      text("gameover! press space to try again!\nscore: " + score + "\nhigh score: " + highScore, { size: 45 })
+      text("gameover! press space to try again!\nscore: " + score + "\nhigh score: " + highScore, { size: 35 })
     ]);
     keyPress("space", () => {
       go("game");
