@@ -1,7 +1,9 @@
 import kaboom from "kaboom";
 
 // initialize context
-kaboom();
+kaboom({
+  scale: 1.5
+});
 
 // load assets
 loadSprite("birdy", "sprites/birdy.png");
