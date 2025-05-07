@@ -19,7 +19,9 @@ let highScore = 0;
 scene("game", () => {
   let score = 0;
   let gameSpeed = 160; // Initial speed
-  
+  let laserThreshold = rand(20, 35);
+  let lasersActive = false;
+
   // Function to calculate pipe gap based on score
   function getPipeGap() {
     const minGap = 120;
@@ -71,6 +73,22 @@ scene("game", () => {
     producePipes();
   });
 
+  function spawnLaser() {
+    if (!lasersActive) return;
+
+    add([
+      sprite("birdy"),
+      area(),
+      pos(rand(0, width()), 0),
+      move(DOWN, 400),
+      rotate(180),
+      "laser",
+      scale(1.5)
+    ]);
+
+    wait(rand(0.8, 2), spawnLaser);
+  }
+
   action("pipe", (pipe) => {
     pipe.move(-gameSpeed, 0);
 
@@ -83,7 +101,23 @@ scene("game", () => {
     }
   });
 
+  // increment score every frame
+  action(() => {
+    score++;
+    scoreText.text = score;
+
+    if (score >= laserThreshold && !lasersActive) {
+      lasersActive = true;
+      spawnLaser();
+    }
+  });
+
   player.collides("pipe", () => {
+    play("hit");
+    go("gameover", score);
+  });
+
+  player.collides("laser", () => {
     play("hit");
     go("gameover", score);
   });
