@@ -17,7 +17,7 @@ let highScore = 0;
 scene("game", () => {
   let score = 0;
   let gameSpeed = 160; // Initial speed
-  
+
   // Function to calculate pipe gap based on score
   function getPipeGap() {
     const minGap = 120;
@@ -38,7 +38,7 @@ scene("game", () => {
   const player = add([
     // list of components
     sprite("birdy"),
-    scale(2),
+    scale(3),
     pos(80, 40),
     area(),
     body(),
