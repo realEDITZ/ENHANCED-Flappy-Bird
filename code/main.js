@@ -15,9 +15,16 @@ loadSound("hit", "sounds/hit.wav");
 let highScore = 0;
 
 scene("game", () => {
-  const PIPE_GAP = 140;
   let score = 0;
   let gameSpeed = 160; // Initial speed
+  
+  // Function to calculate pipe gap based on score
+  function getPipeGap() {
+    const minGap = 120;
+    const maxGap = 200;
+    const variance = Math.min(score * 3, 80); // Increases variance with score, max 80
+    return minGap + rand(-variance, variance);
+  }
 
   add([
     sprite("bg", {width: width(), height: height()})
@@ -39,10 +46,11 @@ scene("game", () => {
 
   function producePipes(){
     const offset = rand(-50, 50);
+    const currentGap = getPipeGap();
 
     add([
       sprite("pipe"),
-      pos(width(), height()/2 + offset + PIPE_GAP/2),
+      pos(width(), height()/2 + offset + currentGap/2),
       "pipe",
       area(),
       {passed: false}
@@ -50,7 +58,7 @@ scene("game", () => {
 
     add([
       sprite("pipe", {flipY: true}),
-      pos(width(), height()/2 + offset - PIPE_GAP/2),
+      pos(width(), height()/2 + offset - currentGap/2),
       origin("botleft"),
       "pipe",
       area()
