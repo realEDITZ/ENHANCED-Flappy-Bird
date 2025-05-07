@@ -2340,6 +2340,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   scene("game", () => {
     let score = 0;
     let gameSpeed = 160;
+    let laserThreshold = rand(20, 35);
+    let lasersActive = false;
     function getPipeGap() {
       const minGap = 120;
       const maxGap = 200;
@@ -2390,7 +2392,28 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         scoreText.text = score;
         gameSpeed += 7;
         play("point");
+        if (score >= laserThreshold && !lasersActive) {
+          lasersActive = true;
+          spawnLaser();
+        }
       }
+    });
+    function spawnLaser() {
+      if (!lasersActive)
+        return;
+      add([
+        sprite("birdy"),
+        pos(rand(0, width()), 0),
+        area(),
+        "laser",
+        move(DOWN, 400)
+      ]);
+      wait(rand(0.8, 2), spawnLaser);
+    }
+    __name(spawnLaser, "spawnLaser");
+    player.collides("laser", () => {
+      play("hit");
+      go("gameover", score);
     });
     player.collides("pipe", () => {
       play("hit");
