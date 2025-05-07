@@ -2343,10 +2343,12 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     let laserThreshold = rand(20, 35);
     let lasersActive = false;
     function getPipeGap() {
-      const minGap = 120;
-      const maxGap = 200;
-      const variance = Math.min(score * 3, 80);
-      return minGap + rand(-variance, variance);
+      const baseGap = 245;
+      const minGap = 132;
+      const reductionRate = 5;
+      const currentGap = Math.max(baseGap - score * reductionRate, minGap);
+      const variance = 33;
+      return currentGap + rand(-variance, variance);
     }
     __name(getPipeGap, "getPipeGap");
     add([
