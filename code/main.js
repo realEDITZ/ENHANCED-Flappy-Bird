@@ -24,10 +24,12 @@ scene("game", () => {
   
   // Function to calculate pipe gap based on score
   function getPipeGap() {
-    const minGap = 120;
-    const maxGap = 200;
-    const variance = Math.min(score * 3, 80); // Increases variance with score, max 80
-    return minGap + rand(-variance, variance);
+    const baseGap = 300; // Start with a wider gap
+    const minGap = 140; // Don't let it get too narrow
+    const reductionRate = 5; // How much to reduce per point
+    const currentGap = Math.max(baseGap - (score * reductionRate), minGap);
+    const variance = 30; // Small variance for randomness
+    return currentGap + rand(-variance, variance);
   }
 
   add([
