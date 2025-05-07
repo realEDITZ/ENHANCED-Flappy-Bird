@@ -2333,6 +2333,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   loadSprite("pipe", "sprites/pipe.png");
   loadSound("wooosh", "sounds/wooosh.mp3");
   loadSound("point", "sounds/point.mp3");
+  loadSound("hit", "sounds/hit.wav");
   var highScore = 0;
   scene("game", () => {
     const PIPE_GAP = 140;
@@ -2381,6 +2382,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       }
     });
     player.collides("pipe", () => {
+      play("hit");
       go("gameover", score);
     });
     player.action(() => {
