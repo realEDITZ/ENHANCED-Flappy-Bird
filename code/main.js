@@ -103,7 +103,7 @@ scene("game", () => {
       move(DOWN, 400),
     ]);
 
-    wait(rand(0.8, 2), spawnLaser);
+    wait(rand(2, 4), spawnLaser);
   }
 
   player.collides("laser", () => {
