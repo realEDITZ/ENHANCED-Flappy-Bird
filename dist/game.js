@@ -2338,6 +2338,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   scene("game", () => {
     const PIPE_GAP = 140;
     let score = 0;
+    let gameSpeed = 160;
     add([
       sprite("bg", { width: width(), height: height() })
     ]);
@@ -2373,11 +2374,12 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       producePipes();
     });
     action("pipe", (pipe) => {
-      pipe.move(-160, 0);
+      pipe.move(-gameSpeed, 0);
       if (pipe.passed === false && pipe.pos.x < player.pos.x) {
         pipe.passed = true;
         score += 1;
         scoreText.text = score;
+        gameSpeed += 7;
         play("point");
       }
     });
@@ -2400,7 +2402,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       highScore = score;
     }
     add([
-      text("gameover!\nscore: " + score + "\nhigh score: " + highScore, { size: 45 })
+      text("gameover! press space to try again!\nscore: " + score + "\nhigh score: " + highScore, { size: 45 })
     ]);
     keyPress("space", () => {
       go("game");

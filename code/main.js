@@ -68,7 +68,7 @@ scene("game", () => {
       pipe.passed = true;
       score += 1;
       scoreText.text = score;
-      gameSpeed += 10; // Increase speed with each point
+      gameSpeed += 7; // Increase speed with each point
       play("point");
     }
   });
@@ -97,7 +97,7 @@ scene("gameover", (score) => {
 
   add([
     text(
-      "gameover!\n"
+      "gameover! press space to try again!\n"
       + "score: " + score
       + "\nhigh score: " + highScore,
       {size: 45}
