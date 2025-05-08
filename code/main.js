@@ -23,6 +23,8 @@ scene("game", () => {
   let lasersActive = false;
   let laserDuration = 45; // Initial duration in seconds
   let breakDuration = 20; // Break duration in seconds
+  let bulletThreshold = rand(30, 45);
+  let bulletsActive = false;
   
   // Function to calculate pipe gap based on score
   function getPipeGap() {
@@ -87,6 +89,11 @@ scene("game", () => {
       gameSpeed += 9; // Increase speed with each point
       play("point");
       
+      if (score >= bulletThreshold && !bulletsActive) {
+        bulletsActive = true;
+        spawnBullet();
+      }
+      
       if (score >= laserThreshold && !lasersActive) {
         lasersActive = true;
         spawnLaser();
@@ -119,6 +126,25 @@ scene("game", () => {
 
     wait(rand(1, 3.5), spawnLaser);
   }
+
+  function spawnBullet() {
+    if (!bulletsActive) return;
+    
+    add([
+      sprite("birdy"),
+      pos(width(), rand(50, height() - 50)),
+      area(),
+      "bullet",
+      move(LEFT, 500),
+    ]);
+
+    wait(rand(1.5, 4), spawnBullet);
+  }
+
+  player.collides("bullet", () => {
+    play("hit");
+    go("gameover", score);
+  });
 
   player.collides("laser", () => {
     play("hit");
