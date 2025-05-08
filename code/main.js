@@ -21,6 +21,8 @@ scene("game", () => {
   let gameSpeed = 160; // Initial speed
   let laserThreshold = rand(20, 35);
   let lasersActive = false;
+  let laserDuration = 60; // Initial duration in seconds
+  let breakDuration = 30; // Break duration in seconds
   
   // Function to calculate pipe gap based on score
   function getPipeGap() {
@@ -88,6 +90,18 @@ scene("game", () => {
       if (score >= laserThreshold && !lasersActive) {
         lasersActive = true;
         spawnLaser();
+        
+        // Set timer to deactivate lasers
+        wait(laserDuration, () => {
+          lasersActive = false;
+          
+          // Wait break duration then restart with increased duration
+          wait(breakDuration, () => {
+            laserDuration += rand(10, 30); // Increase duration
+            lasersActive = true;
+            spawnLaser();
+          });
+        });
       }
     }
   });
