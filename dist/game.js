@@ -2392,7 +2392,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         pipe.passed = true;
         score += 1;
         scoreText.text = score;
-        gameSpeed += 7;
+        gameSpeed += 9;
         play("point");
         if (score >= laserThreshold && !lasersActive) {
           lasersActive = true;
@@ -2410,7 +2410,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         "laser",
         move(DOWN, 400)
       ]);
-      wait(rand(0.8, 2), spawnLaser);
+      wait(rand(1, 3.5), spawnLaser);
     }
     __name(spawnLaser, "spawnLaser");
     player.collides("laser", () => {

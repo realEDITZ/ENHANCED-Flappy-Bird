@@ -82,7 +82,7 @@ scene("game", () => {
       pipe.passed = true;
       score += 1;
       scoreText.text = score;
-      gameSpeed += 7; // Increase speed with each point
+      gameSpeed += 9; // Increase speed with each point
       play("point");
       
       if (score >= laserThreshold && !lasersActive) {
@@ -103,7 +103,7 @@ scene("game", () => {
       move(DOWN, 400),
     ]);
 
-    wait(rand(2, 4), spawnLaser);
+    wait(rand(1, 3.5), spawnLaser);
   }
 
   player.collides("laser", () => {
