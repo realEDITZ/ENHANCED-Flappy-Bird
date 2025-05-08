@@ -2331,6 +2331,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     scale: 1.3
   });
   loadSprite("birdy", "sprites/birdy.png");
+  loadSprite("burdy", "sprites/bean.png");
+  loadSprite("LAZAR", "sprites/LAZAR.png");
   loadSprite("bg", "sprites/bg.png");
   loadSprite("pipe", "sprites/pipe.png");
   loadSound("wooosh", "sounds/wooosh.mp3");
@@ -2342,8 +2344,10 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     let gameSpeed = 160;
     let laserThreshold = rand(20, 35);
     let lasersActive = false;
-    let laserDuration = 60;
-    let breakDuration = 30;
+    let laserDuration = 45;
+    let breakDuration = 20;
+    let bulletThreshold = rand(38, 55);
+    let bulletsActive = false;
     function getPipeGap() {
       const baseGap = 245;
       const minGap = 132;
@@ -2396,6 +2400,10 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         scoreText.text = score;
         gameSpeed += 9;
         play("point");
+        if (score >= bulletThreshold && !bulletsActive) {
+          bulletsActive = true;
+          spawnBullet();
+        }
         if (score >= laserThreshold && !lasersActive) {
           lasersActive = true;
           spawnLaser();
@@ -2414,7 +2422,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       if (!lasersActive)
         return;
       add([
-        sprite("birdy"),
+        sprite("LAZAR"),
         pos(rand(0, width()), 0),
         area(),
         "laser",
@@ -2423,6 +2431,23 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       wait(rand(1, 3.5), spawnLaser);
     }
     __name(spawnLaser, "spawnLaser");
+    function spawnBullet() {
+      if (!bulletsActive)
+        return;
+      add([
+        sprite("burdy"),
+        pos(width(), rand(50, height() - 50)),
+        area(),
+        "bullet",
+        move(LEFT, 500)
+      ]);
+      wait(rand(1.5, 4), spawnBullet);
+    }
+    __name(spawnBullet, "spawnBullet");
+    player.collides("bullet", () => {
+      play("hit");
+      go("gameover", score);
+    });
     player.collides("laser", () => {
       play("hit");
       go("gameover", score);

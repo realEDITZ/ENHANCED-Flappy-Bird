@@ -7,6 +7,8 @@ kaboom({
 
 // load assets
 loadSprite("birdy", "sprites/birdy.png");
+loadSprite("burdy", "sprites/bean.png");
+loadSprite("LAZAR", "sprites/LAZAR.png");
 loadSprite("bg", "sprites/bg.png");
 loadSprite("pipe", "sprites/pipe.png");
 loadSound("wooosh", "sounds/wooosh.mp3");
@@ -21,11 +23,11 @@ scene("game", () => {
   let gameSpeed = 160; // Initial speed
   let laserThreshold = rand(20, 35);
   let lasersActive = false;
-  let laserDuration = 45; // Initial duration in seconds
+  let laserDuration = 25; // Initial duration in seconds
   let breakDuration = 20; // Break duration in seconds
-  let bulletThreshold = rand(30, 45);
+  let bulletThreshold = rand(38, 55);
   let bulletsActive = false;
-  
+
   // Function to calculate pipe gap based on score
   function getPipeGap() {
     const baseGap = 245; // Start with a wider gap
@@ -117,7 +119,7 @@ scene("game", () => {
     if (!lasersActive) return;
     
     add([
-      sprite("birdy"),
+      sprite("LAZAR"),
       pos(rand(0, width()), 0),
       area(),
       "laser",
@@ -131,7 +133,7 @@ scene("game", () => {
     if (!bulletsActive) return;
     
     add([
-      sprite("birdy"),
+      sprite("burdy"),
       pos(width(), rand(50, height() - 50)),
       area(),
       "bullet",
