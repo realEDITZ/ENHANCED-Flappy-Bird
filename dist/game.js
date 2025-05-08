@@ -2342,6 +2342,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     let gameSpeed = 160;
     let laserThreshold = rand(20, 35);
     let lasersActive = false;
+    let laserDuration = 60;
+    let breakDuration = 30;
     function getPipeGap() {
       const baseGap = 245;
       const minGap = 132;
@@ -2397,6 +2399,14 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         if (score >= laserThreshold && !lasersActive) {
           lasersActive = true;
           spawnLaser();
+          wait(laserDuration, () => {
+            lasersActive = false;
+            wait(breakDuration, () => {
+              laserDuration += rand(10, 30);
+              lasersActive = true;
+              spawnLaser();
+            });
+          });
         }
       }
     });

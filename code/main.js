@@ -21,8 +21,8 @@ scene("game", () => {
   let gameSpeed = 160; // Initial speed
   let laserThreshold = rand(20, 35);
   let lasersActive = false;
-  let laserDuration = 60; // Initial duration in seconds
-  let breakDuration = 30; // Break duration in seconds
+  let laserDuration = 45; // Initial duration in seconds
+  let breakDuration = 20; // Break duration in seconds
   
   // Function to calculate pipe gap based on score
   function getPipeGap() {
