@@ -21,67 +21,12 @@ let highScore = 0;
 scene("game", () => {
   let score = 0;
   let gameSpeed = 160; // Initial speed
-  let baseSpeed = 160; // Store base speed for power-ups
   let laserThreshold = rand(20, 35);
   let lasersActive = false;
   let laserDuration = 25; // Initial duration in seconds
   let breakDuration = 20; // Break duration in seconds
   let bulletThreshold = rand(38, 55);
   let bulletsActive = false;
-  let immunityHits = 0;
-  
-  // Power-up system
-  function spawnPowerUp() {
-    if (!player.exists()) return;
-    
-    const powerUps = [
-      { name: "quarterSpeed", chance: 0.25, duration: 15 },
-      { name: "halfSpeed", chance: 0.25, duration: 10 },
-      { name: "immunity", chance: 0.15, duration: 0 },
-      { name: "doubleSpeed", chance: 0.15, duration: 7 },
-      { name: "spawnLasers", chance: 0.1, duration: 5 },
-      { name: "spawnBullets", chance: 0.1, duration: 5 }
-    ];
-    
-    add([
-      sprite("box"),
-      pos(width(), rand(50, height() - 100)),
-      area(),
-      "powerup",
-      { type: choose(powerUps) },
-      move(LEFT, gameSpeed)
-    ]);
-    
-    wait(rand(5, 10), spawnPowerUp);
-  }
-
-  function activatePowerUp(type) {
-    switch(type.name) {
-      case "quarterSpeed":
-        gameSpeed = baseSpeed * 0.25;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "halfSpeed":
-        gameSpeed = baseSpeed * 0.5;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "immunity":
-        immunityHits = 2;
-        break;
-      case "doubleSpeed":
-        gameSpeed = baseSpeed * 2;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "spawnLasers":
-        lasersActive = true;
-        wait(type.duration, () => lasersActive = false);
-        break;
-      case "spawnBullets":
-        bulletsActive = true;
-        wait(type.duration, () => bulletsActive = false);
-        break;
-    }
-  }
 
   // Function to calculate pipe gap based on score
   function getPipeGap() {
@@ -135,9 +80,6 @@ scene("game", () => {
   loop(1.5, () => {
     producePipes();
   });
-  
-  // Start spawning power-ups
-  wait(5, spawnPowerUp);
 
   action("pipe", (pipe) => {
     pipe.move(-gameSpeed, 0);
@@ -212,18 +154,8 @@ scene("game", () => {
   });
 
   player.collides("pipe", () => {
-    if (immunityHits > 0) {
-      immunityHits--;
-      return;
-    }
     play("hit");
     go("gameover", score);
-  });
-
-  player.collides("powerup", (p) => {
-    activatePowerUp(p.type);
-    destroy(p);
-    play("point");
   });
 
   player.action(() => {
