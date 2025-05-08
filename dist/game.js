@@ -2342,12 +2342,64 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   scene("game", () => {
     let score = 0;
     let gameSpeed = 160;
+    let baseSpeed = 160;
     let laserThreshold = rand(20, 35);
     let lasersActive = false;
-    let laserDuration = 45;
+    let laserDuration = 25;
     let breakDuration = 20;
     let bulletThreshold = rand(38, 55);
     let bulletsActive = false;
+    let immunityHits = 0;
+    function spawnPowerUp() {
+      if (!player.exists())
+        return;
+      const powerUps = [
+        { name: "quarterSpeed", chance: 0.25, duration: 15 },
+        { name: "halfSpeed", chance: 0.25, duration: 10 },
+        { name: "immunity", chance: 0.15, duration: 0 },
+        { name: "doubleSpeed", chance: 0.15, duration: 7 },
+        { name: "spawnLasers", chance: 0.1, duration: 5 },
+        { name: "spawnBullets", chance: 0.1, duration: 5 }
+      ];
+      add([
+        sprite("box"),
+        pos(width(), rand(50, height() - 100)),
+        area(),
+        "powerup",
+        { type: choose(powerUps) },
+        move(LEFT, gameSpeed)
+      ]);
+      wait(rand(5, 10), spawnPowerUp);
+    }
+    __name(spawnPowerUp, "spawnPowerUp");
+    function activatePowerUp(type) {
+      switch (type.name) {
+        case "quarterSpeed":
+          gameSpeed = baseSpeed * 0.25;
+          wait(type.duration, () => gameSpeed = baseSpeed);
+          break;
+        case "halfSpeed":
+          gameSpeed = baseSpeed * 0.5;
+          wait(type.duration, () => gameSpeed = baseSpeed);
+          break;
+        case "immunity":
+          immunityHits = 2;
+          break;
+        case "doubleSpeed":
+          gameSpeed = baseSpeed * 2;
+          wait(type.duration, () => gameSpeed = baseSpeed);
+          break;
+        case "spawnLasers":
+          lasersActive = true;
+          wait(type.duration, () => lasersActive = false);
+          break;
+        case "spawnBullets":
+          bulletsActive = true;
+          wait(type.duration, () => bulletsActive = false);
+          break;
+      }
+    }
+    __name(activatePowerUp, "activatePowerUp");
     function getPipeGap() {
       const baseGap = 245;
       const minGap = 132;
@@ -2392,6 +2444,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     loop(1.5, () => {
       producePipes();
     });
+    wait(5, spawnPowerUp);
     action("pipe", (pipe) => {
       pipe.move(-gameSpeed, 0);
       if (pipe.passed === false && pipe.pos.x < player.pos.x) {
@@ -2453,8 +2506,17 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       go("gameover", score);
     });
     player.collides("pipe", () => {
+      if (immunityHits > 0) {
+        immunityHits--;
+        return;
+      }
       play("hit");
       go("gameover", score);
+    });
+    player.collides("powerup", (p) => {
+      activatePowerUp(p.type);
+      destroy(p);
+      play("point");
     });
     player.action(() => {
       if (player.pos.y > height() + 30 || player.pos.y < -30) {

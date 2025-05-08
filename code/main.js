@@ -11,6 +11,7 @@ loadSprite("burdy", "sprites/bean.png");
 loadSprite("LAZAR", "sprites/LAZAR.png");
 loadSprite("bg", "sprites/bg.png");
 loadSprite("pipe", "sprites/pipe.png");
+loadSprite("box", "sprites/box.png");
 loadSound("wooosh", "sounds/wooosh.mp3");
 loadSound("point", "sounds/point.mp3");
 loadSound("hit", "sounds/hit.wav");
@@ -52,7 +53,7 @@ scene("game", () => {
       move(LEFT, gameSpeed)
     ]);
     
-    wait(rand(5, 10), spawnPowerUp);
+    wait(rand(23, 40), spawnPowerUp);
   }
 
   function activatePowerUp(type) {
