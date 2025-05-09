@@ -51,16 +51,16 @@ scene("game", () => {
         "powerup",
         { type: choose(powerUps) },
         move(LEFT, gameSpeed * 1.5),
-        { moveDir: rand(-1, 1) }
-      ]);
-
-      // Add vertical movement
-      powerUpBox.onUpdate(() => {
+        { moveDir: rand(-1, 1) },
+        {
+          update() {
         powerUpBox.move(0, powerUpBox.moveDir * 2);
         if (powerUpBox.pos.y < 50 || powerUpBox.pos.y > height() - 100) {
           powerUpBox.moveDir *= -1;
         }
-      });
+      }
+      }]);
+
 
     wait(rand(33, 45), spawnPowerUp);
   }
