@@ -53,7 +53,7 @@ scene("game", () => {
       move(LEFT, gameSpeed)
     ]);
 
-    wait(rand(23, 40), spawnPowerUp);
+    wait(rand(33, 45), spawnPowerUp);
   }
 
   function activatePowerUp(type) {
@@ -207,7 +207,7 @@ scene("game", () => {
       pos(width(), rand(50, height() - 50)),
       area(),
       "bullet",
-      move(LEFT, 500),
+      move(LEFT, 3500),
     ]);
 
     wait(rand(1.5, 4), spawnBullet);

@@ -2335,6 +2335,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   loadSprite("LAZAR", "sprites/LAZAR.png");
   loadSprite("bg", "sprites/bg.png");
   loadSprite("pipe", "sprites/pipe.png");
+  loadSprite("box", "sprites/box.png");
   loadSound("wooosh", "sounds/wooosh.mp3");
   loadSound("point", "sounds/point.mp3");
   loadSound("hit", "sounds/hit.wav");
@@ -2369,25 +2370,28 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         { type: choose(powerUps) },
         move(LEFT, gameSpeed)
       ]);
-      wait(rand(5, 10), spawnPowerUp);
+      wait(rand(23, 40), spawnPowerUp);
     }
     __name(spawnPowerUp, "spawnPowerUp");
     function activatePowerUp(type) {
       switch (type.name) {
         case "quarterSpeed":
-          gameSpeed = baseSpeed * 0.25;
-          wait(type.duration, () => gameSpeed = baseSpeed);
+          const quarterSpeed = gameSpeed * 0.25;
+          gameSpeed = quarterSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 0.25);
           break;
         case "halfSpeed":
-          gameSpeed = baseSpeed * 0.5;
-          wait(type.duration, () => gameSpeed = baseSpeed);
+          const halfSpeed = gameSpeed * 0.5;
+          gameSpeed = halfSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 0.5);
           break;
         case "immunity":
           immunityHits = 2;
           break;
         case "doubleSpeed":
-          gameSpeed = baseSpeed * 2;
-          wait(type.duration, () => gameSpeed = baseSpeed);
+          const doubleSpeed = gameSpeed * 2;
+          gameSpeed = doubleSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 2);
           break;
         case "spawnLasers":
           lasersActive = true;
@@ -2396,6 +2400,14 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         case "spawnBullets":
           bulletsActive = true;
           wait(type.duration, () => bulletsActive = false);
+          break;
+        case "doubleScore":
+          scoreMultiplier = 2;
+          wait(type.duration, () => scoreMultiplier = 1);
+          break;
+        case "tripleScore":
+          scoreMultiplier = 3;
+          wait(type.duration, () => scoreMultiplier = 1);
           break;
       }
     }
