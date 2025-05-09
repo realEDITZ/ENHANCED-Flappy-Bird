@@ -225,8 +225,8 @@
     }, rotateZ(t) {
       return t = ke(t), this.mult(re([Math.cos(t), -Math.sin(t), 0, 0, Math.sin(t), Math.cos(t), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]));
     }, invert() {
-      let t = [], r = this.m[10] * this.m[15] - this.m[14] * this.m[11], o = this.m[9] * this.m[15] - this.m[13] * this.m[11], m = this.m[9] * this.m[14] - this.m[13] * this.m[10], v = this.m[8] * this.m[15] - this.m[12] * this.m[11], U = this.m[8] * this.m[14] - this.m[12] * this.m[10], w = this.m[8] * this.m[13] - this.m[12] * this.m[9], x = this.m[6] * this.m[15] - this.m[14] * this.m[7], D = this.m[5] * this.m[15] - this.m[13] * this.m[7], S = this.m[5] * this.m[14] - this.m[13] * this.m[6], A = this.m[4] * this.m[15] - this.m[12] * this.m[7], E = this.m[4] * this.m[14] - this.m[12] * this.m[6], T = this.m[5] * this.m[15] - this.m[13] * this.m[7], K = this.m[4] * this.m[13] - this.m[12] * this.m[5], F = this.m[6] * this.m[11] - this.m[10] * this.m[7], X = this.m[5] * this.m[11] - this.m[9] * this.m[7], N = this.m[5] * this.m[10] - this.m[9] * this.m[6], z = this.m[4] * this.m[11] - this.m[8] * this.m[7], O = this.m[4] * this.m[10] - this.m[8] * this.m[6], q = this.m[4] * this.m[9] - this.m[8] * this.m[5];
-      t[0] = this.m[5] * r - this.m[6] * o + this.m[7] * m, t[4] = -(this.m[4] * r - this.m[6] * v + this.m[7] * U), t[8] = this.m[4] * o - this.m[5] * v + this.m[7] * w, t[12] = -(this.m[4] * m - this.m[5] * U + this.m[6] * w), t[1] = -(this.m[1] * r - this.m[2] * o + this.m[3] * m), t[5] = this.m[0] * r - this.m[2] * v + this.m[3] * U, t[9] = -(this.m[0] * o - this.m[1] * v + this.m[3] * w), t[13] = this.m[0] * m - this.m[1] * U + this.m[2] * w, t[2] = this.m[1] * x - this.m[2] * D + this.m[3] * S, t[6] = -(this.m[0] * x - this.m[2] * A + this.m[3] * E), t[10] = this.m[0] * T - this.m[1] * A + this.m[3] * K, t[14] = -(this.m[0] * S - this.m[1] * E + this.m[2] * K), t[3] = -(this.m[1] * F - this.m[2] * X + this.m[3] * N), t[7] = this.m[0] * F - this.m[2] * z + this.m[3] * O, t[11] = -(this.m[0] * X - this.m[1] * z + this.m[3] * q), t[15] = this.m[0] * N - this.m[1] * O + this.m[2] * q;
+      let t = [], r = this.m[10] * this.m[15] - this.m[14] * this.m[11], o = this.m[9] * this.m[15] - this.m[13] * this.m[11], m = this.m[9] * this.m[14] - this.m[13] * this.m[10], v = this.m[8] * this.m[15] - this.m[12] * this.m[11], U = this.m[8] * this.m[14] - this.m[12] * this.m[10], w = this.m[8] * this.m[13] - this.m[12] * this.m[9], x = this.m[6] * this.m[15] - this.m[14] * this.m[7], D = this.m[5] * this.m[15] - this.m[13] * this.m[7], S = this.m[5] * this.m[14] - this.m[13] * this.m[6], A = this.m[4] * this.m[15] - this.m[12] * this.m[7], E = this.m[4] * this.m[14] - this.m[12] * this.m[6], T = this.m[5] * this.m[15] - this.m[13] * this.m[7], K = this.m[4] * this.m[13] - this.m[12] * this.m[5], F = this.m[6] * this.m[11] - this.m[10] * this.m[7], X = this.m[5] * this.m[11] - this.m[9] * this.m[7], N = this.m[5] * this.m[10] - this.m[9] * this.m[6], z2 = this.m[4] * this.m[11] - this.m[8] * this.m[7], O = this.m[4] * this.m[10] - this.m[8] * this.m[6], q = this.m[4] * this.m[9] - this.m[8] * this.m[5];
+      t[0] = this.m[5] * r - this.m[6] * o + this.m[7] * m, t[4] = -(this.m[4] * r - this.m[6] * v + this.m[7] * U), t[8] = this.m[4] * o - this.m[5] * v + this.m[7] * w, t[12] = -(this.m[4] * m - this.m[5] * U + this.m[6] * w), t[1] = -(this.m[1] * r - this.m[2] * o + this.m[3] * m), t[5] = this.m[0] * r - this.m[2] * v + this.m[3] * U, t[9] = -(this.m[0] * o - this.m[1] * v + this.m[3] * w), t[13] = this.m[0] * m - this.m[1] * U + this.m[2] * w, t[2] = this.m[1] * x - this.m[2] * D + this.m[3] * S, t[6] = -(this.m[0] * x - this.m[2] * A + this.m[3] * E), t[10] = this.m[0] * T - this.m[1] * A + this.m[3] * K, t[14] = -(this.m[0] * S - this.m[1] * E + this.m[2] * K), t[3] = -(this.m[1] * F - this.m[2] * X + this.m[3] * N), t[7] = this.m[0] * F - this.m[2] * z2 + this.m[3] * O, t[11] = -(this.m[0] * X - this.m[1] * z2 + this.m[3] * q), t[15] = this.m[0] * N - this.m[1] * O + this.m[2] * q;
       let d = this.m[0] * t[0] + this.m[1] * t[4] + this.m[2] * t[8] + this.m[3] * t[12];
       for (let j = 0; j < 4; j++)
         for (let ie = 0; ie < 4; ie++)
@@ -496,11 +496,11 @@
     }
     __name(N, "N");
     s(N, "pushRotateX");
-    function z(h) {
+    function z2(h) {
       !h || (o.transform = o.transform.rotateY(h));
     }
-    __name(z, "z");
-    s(z, "pushRotateY");
+    __name(z2, "z");
+    s(z2, "pushRotateY");
     function O(h) {
       !h || (o.transform = o.transform.rotateZ(h));
     }
@@ -811,11 +811,11 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     }
     __name(N, "N");
     s(N, "charInputted");
-    function z() {
+    function z2() {
       return r.dt;
     }
-    __name(z, "z");
-    s(z, "dt");
+    __name(z2, "z");
+    s(z2, "dt");
     function O() {
       return r.time;
     }
@@ -858,7 +858,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       cancelAnimationFrame(r.loopID), r.stopped = true;
     }
     __name(pe, "pe");
-    return s(pe, "quit"), { gl: U, mousePos: w, mouseDeltaPos: x, keyDown: F, keyPressed: T, keyPressedRep: K, keyReleased: X, mouseDown: S, mouseClicked: D, mouseReleased: A, mouseMoved: E, charInputted: N, cursor: j, dt: z, time: O, fps: q, screenshot: d, run: me, quit: pe, focused: () => document.activeElement === r.canvas, focus: () => r.canvas.focus(), canvas: r.canvas, isTouch: r.isTouch, scale: r.scale, fullscreen: ie };
+    return s(pe, "quit"), { gl: U, mousePos: w, mouseDeltaPos: x, keyDown: F, keyPressed: T, keyPressedRep: K, keyReleased: X, mouseDown: S, mouseClicked: D, mouseReleased: A, mouseMoved: E, charInputted: N, cursor: j, dt: z2, time: O, fps: q, screenshot: d, run: me, quit: pe, focused: () => document.activeElement === r.canvas, focus: () => r.canvas.focus(), canvas: r.canvas, isTouch: r.isTouch, scale: r.scale, fullscreen: ie };
   }
   __name(Bt, "Bt");
   var _t = $(() => {
@@ -996,24 +996,24 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     __name(U, "U");
     s(U, "loadRoot");
     function w(A, E, T, K, F = ut) {
-      let X = new Promise((N, z) => {
+      let X = new Promise((N, z2) => {
         let O = $t(E) ? E : o.loadRoot + E;
         Qt(O).then((q) => {
           let d = e.makeFont(e.makeTex(q), T, K, F);
           A && (o.fonts[A] = d), N(d);
-        }).catch(z);
+        }).catch(z2);
       });
       return m(X), X;
     }
     __name(w, "w");
     s(w, "loadFont");
     function x(A, E, T = { sliceX: 1, sliceY: 1, anims: {} }) {
-      function K(X, N, z = { sliceX: 1, sliceY: 1, gridWidth: 0, gridHeight: 0, anims: {} }) {
-        let O = [], q = e.makeTex(N), d = z.sliceX || q.width / (z.gridWidth || q.width), j = z.sliceY || q.height / (z.gridHeight || q.height), ie = 1 / d, me = 1 / j;
+      function K(X, N, z2 = { sliceX: 1, sliceY: 1, gridWidth: 0, gridHeight: 0, anims: {} }) {
+        let O = [], q = e.makeTex(N), d = z2.sliceX || q.width / (z2.gridWidth || q.width), j = z2.sliceY || q.height / (z2.gridHeight || q.height), ie = 1 / d, me = 1 / j;
         for (let ne = 0; ne < j; ne++)
           for (let ce = 0; ce < d; ce++)
             O.push(oe(ce * ie, ne * me, ie, me));
-        let pe = { tex: q, frames: O, anims: z.anims || {} };
+        let pe = { tex: q, frames: O, anims: z2.anims || {} };
         return X && (o.sprites[X] = pe), pe;
       }
       __name(K, "K");
@@ -1022,8 +1022,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         if (!E)
           return N(`expected sprite src for "${A}"`);
         if (typeof E == "string") {
-          let z = $t(E) ? E : o.loadRoot + E;
-          Qt(z).then((O) => {
+          let z2 = $t(E) ? E : o.loadRoot + E;
+          Qt(z2).then((O) => {
             X(K(A, O, T));
           }).catch(N);
         } else
@@ -1034,32 +1034,32 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     __name(x, "x");
     s(x, "loadSprite");
     function D(A, E, T, K = false) {
-      function F(N, z, O) {
-        let q = e.makeProgram(z, O);
+      function F(N, z2, O) {
+        let q = e.makeProgram(z2, O);
         return N && (o.shaders[N] = q), q;
       }
       __name(F, "F");
       s(F, "loadRawShader");
-      let X = new Promise((N, z) => {
+      let X = new Promise((N, z2) => {
         if (!E && !T)
-          return z("no shader");
+          return z2("no shader");
         function O(q) {
           return q ? fetch(o.loadRoot + q).then((d) => {
             if (d.ok)
               return d.text();
             throw new Error(`failed to load ${q}`);
-          }).catch(z) : new Promise((d) => d(null));
+          }).catch(z2) : new Promise((d) => d(null));
         }
         __name(O, "O");
         if (s(O, "resolveUrl"), K)
           Promise.all([O(E), O(T)]).then(([q, d]) => {
             N(F(A, q, d));
-          }).catch(z);
+          }).catch(z2);
         else
           try {
             N(F(A, E, T));
           } catch (q) {
-            z(q);
+            z2(q);
           }
       });
       return m(X), X;
@@ -1074,8 +1074,8 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
           if (N.ok)
             return N.arrayBuffer();
           throw new Error(`failed to load ${T}`);
-        }).then((N) => new Promise((z, O) => {
-          t.ctx.decodeAudioData(N, z, O);
+        }).then((N) => new Promise((z2, O) => {
+          t.ctx.decodeAudioData(N, z2, O);
         })).then((N) => {
           A && (o.sounds[A] = N), F(N);
         }).catch(X);
@@ -1461,15 +1461,15 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       }
       __name(N, "N");
       s(N, "drawSprite");
-      function z(n, i = {}) {
+      function z2(n, i = {}) {
         var g;
         let u = (g = i.font) != null ? g : D, a = U.fonts[u];
         if (!a)
           throw new Error(`font not found: ${u}`);
         o.drawText(n, a, i);
       }
-      __name(z, "z");
-      s(z, "drawText");
+      __name(z2, "z");
+      s(z2, "drawText");
       let O = 980, q = "topleft", d = { loaded: false, events: {}, objEvents: {}, actions: new Z(), renders: new Z(), objs: new Z(), timers: new Z(), cam: { pos: l(m() / 2, v() / 2), scale: l(1, 1), angle: 0, shake: 0 }, camMousePos: r.mousePos(), camMatrix: re(), layers: {}, defLayer: null, gravity: O, on(n, i) {
         return this.events[n] || (this.events[n] = new Z()), this.events[n].pushd(i);
       }, trigger(n, ...i) {
@@ -2300,7 +2300,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       }
       __name(lt, "lt");
       s(lt, "center");
-      let Ge = { loadRoot: U.loadRoot, loadSprite: U.loadSprite, loadSound: U.loadSound, loadFont: U.loadFont, loadShader: U.loadShader, load: U.load, width: m, height: v, center: lt, dt: T, time: r.time, screenshot: r.screenshot, focused: r.focused, focus: r.focus, cursor: r.cursor, regCursor: Xe, fullscreen: r.fullscreen, ready: Le, isTouch: () => r.isTouch, layers: j, camPos: ie, camScale: me, camRot: pe, shake: ne, toScreen: ce, toWorld: ve, gravity: Oe, add: he, readd: ge, destroy: Re, destroyAll: Me, get: De, every: te, revery: Ve, getComps: ae, pos: Cr, scale: ct, rotate: Dr, color: Er, origin: Ar, layer: Pr, area: Rr, sprite: Gr, text: kr, rect: Br, outline: _r, body: Lr, shader: Nr, timer: Fr, solid: Yr, fixed: qr, stay: Ir, health: zr, lifespan: Kr, z: Sr, move: Tr, on: ye, action: h, render: p, collides: b, overlaps: P, clicks: B, hovers: V, keyDown: R, keyPress: I, keyPressRep: L, keyRelease: Q, mouseDown: ee, mouseClick: Te, mouseRelease: ue, mouseMove: xe, charInput: we, touchStart: ze, touchMove: Ke, touchEnd: Ce, mousePos: F, mouseWorldPos: X, mouseDeltaPos: r.mouseDeltaPos, keyIsDown: r.keyDown, keyIsPressed: r.keyPressed, keyIsPressedRep: r.keyPressedRep, keyIsReleased: r.keyReleased, mouseIsDown: r.mouseDown, mouseIsClicked: r.mouseClicked, mouseIsReleased: r.mouseReleased, mouseIsMoved: r.mouseMoved, loop: _, wait: H, play: K, volume: t.volume, burp: t.burp, audioCtx: t.ctx, rng: nt, rand: qe, randSeed: Ct, vec2: l, dir: We, rgb: de, rgba: W, quad: oe, choose: Et, chance: Dt, lerp: Ye, map: Be, mapc: bt, wave: yt, deg2rad: ke, rad2deg: tt, drawSprite: N, drawText: z, drawRect: o.drawRect, drawRectStroke: o.drawRectStroke, drawLine: o.drawLine, drawTri: o.drawTri, debug: J, scene: Hr, go: Mr, getData: Or, setData: dt, plug: be, ASCII_CHARS: ut, CP437_CHARS: Ot, LEFT: l(-1, 0), RIGHT: l(1, 0), UP: l(0, -1), DOWN: l(0, 1), canvas: r.canvas };
+      let Ge = { loadRoot: U.loadRoot, loadSprite: U.loadSprite, loadSound: U.loadSound, loadFont: U.loadFont, loadShader: U.loadShader, load: U.load, width: m, height: v, center: lt, dt: T, time: r.time, screenshot: r.screenshot, focused: r.focused, focus: r.focus, cursor: r.cursor, regCursor: Xe, fullscreen: r.fullscreen, ready: Le, isTouch: () => r.isTouch, layers: j, camPos: ie, camScale: me, camRot: pe, shake: ne, toScreen: ce, toWorld: ve, gravity: Oe, add: he, readd: ge, destroy: Re, destroyAll: Me, get: De, every: te, revery: Ve, getComps: ae, pos: Cr, scale: ct, rotate: Dr, color: Er, origin: Ar, layer: Pr, area: Rr, sprite: Gr, text: kr, rect: Br, outline: _r, body: Lr, shader: Nr, timer: Fr, solid: Yr, fixed: qr, stay: Ir, health: zr, lifespan: Kr, z: Sr, move: Tr, on: ye, action: h, render: p, collides: b, overlaps: P, clicks: B, hovers: V, keyDown: R, keyPress: I, keyPressRep: L, keyRelease: Q, mouseDown: ee, mouseClick: Te, mouseRelease: ue, mouseMove: xe, charInput: we, touchStart: ze, touchMove: Ke, touchEnd: Ce, mousePos: F, mouseWorldPos: X, mouseDeltaPos: r.mouseDeltaPos, keyIsDown: r.keyDown, keyIsPressed: r.keyPressed, keyIsPressedRep: r.keyPressedRep, keyIsReleased: r.keyReleased, mouseIsDown: r.mouseDown, mouseIsClicked: r.mouseClicked, mouseIsReleased: r.mouseReleased, mouseIsMoved: r.mouseMoved, loop: _, wait: H, play: K, volume: t.volume, burp: t.burp, audioCtx: t.ctx, rng: nt, rand: qe, randSeed: Ct, vec2: l, dir: We, rgb: de, rgba: W, quad: oe, choose: Et, chance: Dt, lerp: Ye, map: Be, mapc: bt, wave: yt, deg2rad: ke, rad2deg: tt, drawSprite: N, drawText: z2, drawRect: o.drawRect, drawRectStroke: o.drawRectStroke, drawLine: o.drawLine, drawTri: o.drawTri, debug: J, scene: Hr, go: Mr, getData: Or, setData: dt, plug: be, ASCII_CHARS: ut, CP437_CHARS: Ot, LEFT: l(-1, 0), RIGHT: l(1, 0), UP: l(0, -1), DOWN: l(0, 1), canvas: r.canvas };
       if (be(sr), be(ir), be(ur), be(hr), be(mr), be(vr), e.plugins && e.plugins.forEach(be), e.global !== false)
         for (let n in Ge)
           window[n] = Ge[n];
@@ -2340,6 +2340,144 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
   loadSound("point", "sounds/point.mp3");
   loadSound("hit", "sounds/hit.wav");
   var highScore = 0;
+  scene("menu", () => {
+    add([
+      sprite("bg", { width: width(), height: height() })
+    ]);
+    add([
+      text("ENHANCED Flappy Bird", { size: 45 }),
+      pos(width() / 2, height() / 4),
+      origin("center"),
+      color(255, 255, 0)
+    ]);
+    const menuBird = add([
+      sprite("birdy"),
+      scale(2),
+      pos(width() / 2, height() / 2 - 20),
+      origin("center")
+    ]);
+    let floatDir = 1;
+    menuBird.action(() => {
+      menuBird.pos.y += floatDir * 0.7;
+      if (menuBird.pos.y > height() / 2 + 10 || menuBird.pos.y < height() / 2 - 30) {
+        floatDir *= -1;
+      }
+    });
+    const playBtn = add([
+      text("PLAY", { size: 32 }),
+      pos(width() / 2, height() / 2 + 80),
+      area(),
+      origin("center"),
+      color(0, 255, 0),
+      "playButton"
+    ]);
+    const howToPlayBtn = add([
+      text("HOW TO PLAY", { size: 32 }),
+      pos(width() / 2, height() / 2 + 140),
+      area(),
+      origin("center"),
+      color(0, 255, 255),
+      "howToPlayButton"
+    ]);
+    mouseClick(() => {
+      if (mousePos().x > playBtn.pos.x - 50 && mousePos().x < playBtn.pos.x + 50 && mousePos().y > playBtn.pos.y - 20 && mousePos().y < playBtn.pos.y + 20) {
+        go("game");
+      }
+      if (mousePos().x > howToPlayBtn.pos.x - 100 && mousePos().x < howToPlayBtn.pos.x + 100 && mousePos().y > howToPlayBtn.pos.y - 20 && mousePos().y < howToPlayBtn.pos.y + 20) {
+        go("howToPlay");
+      }
+    });
+    action("playButton", (btn) => {
+      if (mousePos().x > btn.pos.x - 50 && mousePos().x < btn.pos.x + 50 && mousePos().y > btn.pos.y - 20 && mousePos().y < btn.pos.y + 20) {
+        btn.scale = vec2(1.1);
+      } else {
+        btn.scale = vec2(1);
+      }
+    });
+    action("howToPlayButton", (btn) => {
+      if (mousePos().x > btn.pos.x - 100 && mousePos().x < btn.pos.x + 100 && mousePos().y > btn.pos.y - 20 && mousePos().y < btn.pos.y + 20) {
+        btn.scale = vec2(1.1);
+      } else {
+        btn.scale = vec2(1);
+      }
+    });
+    keyPress("space", () => {
+      go("game");
+    });
+  });
+  scene("howToPlay", () => {
+    add([
+      sprite("bg", { width: width(), height: height() })
+    ]);
+    add([
+      text("HOW TO PLAY", { size: 40 }),
+      pos(width() / 2, 60),
+      origin("center"),
+      color(255, 255, 0)
+    ]);
+    const instructions = [
+      "To flap, press the SPACE BAR and try to maneuver",
+      "yourself through the pipes and get a high score!",
+      "",
+      "There are powerups that you can encounter along the way",
+      "that can do good (or bad)!",
+      "",
+      "But watch out, there can be laser beams falling from",
+      "the sky or bullets that come straight for you!",
+      "",
+      "Now what are you waiting for, PRESS PLAY!"
+    ];
+    add([
+      text(instructions.join("\n"), {
+        size: 24,
+        lineSpacing: 8,
+        width: width() - 100
+      }),
+      pos(width() / 2, 180),
+      origin("top"),
+      color(255, 255, 255)
+    ]);
+    const backBtn = add([
+      text("BACK", { size: 32 }),
+      pos(width() / 4, height() - 80),
+      area(),
+      origin("center"),
+      color(255, 100, 100)
+    ]);
+    const playBtn = add([
+      text("PLAY", { size: 32 }),
+      pos(width() * 3 / 4, height() - 80),
+      area(),
+      origin("center"),
+      color(0, 255, 0)
+    ]);
+    mouseClick(() => {
+      if (mousePos().x > backBtn.pos.x - 50 && mousePos().x < backBtn.pos.x + 50 && mousePos().y > backBtn.pos.y - 20 && mousePos().y < backBtn.pos.y + 20) {
+        go("menu");
+      }
+      if (mousePos().x > playBtn.pos.x - 50 && mousePos().x < playBtn.pos.x + 50 && mousePos().y > playBtn.pos.y - 20 && mousePos().y < playBtn.pos.y + 20) {
+        go("game");
+      }
+    });
+    action(() => {
+      if (mousePos().x > backBtn.pos.x - 50 && mousePos().x < backBtn.pos.x + 50 && mousePos().y > backBtn.pos.y - 20 && mousePos().y < backBtn.pos.y + 20) {
+        backBtn.scale = vec2(1.1);
+      } else {
+        backBtn.scale = vec2(1);
+      }
+      if (mousePos().x > playBtn.pos.x - 50 && mousePos().x < playBtn.pos.x + 50 && mousePos().y > playBtn.pos.y - 20 && mousePos().y < playBtn.pos.y + 20) {
+        playBtn.scale = vec2(1.1);
+      } else {
+        playBtn.scale = vec2(1);
+      }
+    });
+    keyPress("escape", () => {
+      go("menu");
+    });
+    keyPress("space", () => {
+      go("game");
+    });
+  });
   scene("game", () => {
     let score = 0;
     let gameSpeed = 160;
@@ -2348,19 +2486,62 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
     let lasersActive = false;
     let laserDuration = 25;
     let breakDuration = 20;
-    let bulletThreshold = rand(38, 55);
+    let bulletThreshold = rand(35, 55);
     let bulletsActive = false;
     let immunityHits = 0;
+    let activeEffects = {};
+    let scoreMultiplier = 1;
+    let powerUpMessage = add([
+      text("", { size: 36 }),
+      pos(width() / 2, 80),
+      origin("center"),
+      color(255, 255, 0),
+      z(100)
+    ]);
+    powerUpMessage.opacity = 0;
+    function showPowerUpMessage(message, isPersistent = false) {
+      powerUpMessage.text = message;
+      powerUpMessage.opacity = 1;
+      if (!isPersistent) {
+        wait(2, () => {
+          if (powerUpMessage.text === message) {
+            powerUpMessage.opacity = 0;
+          }
+        });
+      }
+    }
+    __name(showPowerUpMessage, "showPowerUpMessage");
+    function hidePowerUpMessage() {
+      powerUpMessage.opacity = 0;
+      powerUpMessage.text = "";
+    }
+    __name(hidePowerUpMessage, "hidePowerUpMessage");
+    function updateImmunityMessage() {
+      if (immunityHits > 0) {
+        showPowerUpMessage(`IMMUNITY x${immunityHits}`, true);
+        activeEffects["immunity"] = true;
+      } else {
+        if (activeEffects["immunity"]) {
+          delete activeEffects["immunity"];
+          if (Object.keys(activeEffects).length === 0) {
+            hidePowerUpMessage();
+          }
+        }
+      }
+    }
+    __name(updateImmunityMessage, "updateImmunityMessage");
     function spawnPowerUp() {
       if (!player.exists())
         return;
       const powerUps = [
         { name: "quarterSpeed", chance: 0.25, duration: 15 },
         { name: "halfSpeed", chance: 0.25, duration: 10 },
-        { name: "immunity", chance: 0.15, duration: 0 },
-        { name: "doubleSpeed", chance: 0.15, duration: 7 },
-        { name: "spawnLasers", chance: 0.1, duration: 5 },
-        { name: "spawnBullets", chance: 0.1, duration: 5 }
+        { name: "immunity", chance: 0.1, duration: 0 },
+        { name: "doubleSpeed", chance: 0.25, duration: 7 },
+        { name: "spawnLasers", chance: 0.23, duration: 5 },
+        { name: "spawnBullets", chance: 0.23, duration: 5 },
+        { name: "doubleScore", chance: 0.1, duration: 10 },
+        { name: "tripleScore", chance: 0.05, duration: 10 }
       ];
       const powerUpBox = add([
         sprite("box"),
@@ -2368,53 +2549,138 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         area(),
         "powerup",
         { type: choose(powerUps) },
-        move(LEFT, gameSpeed * 1.5),
-        { moveDir: rand(-1, 1) }
-      ]);
-      powerUpBox.onUpdate(() => {
-        powerUpBox.move(0, powerUpBox.moveDir * 2);
-        if (powerUpBox.pos.y < 50 || powerUpBox.pos.y > height() - 100) {
-          powerUpBox.moveDir *= -1;
+        move(LEFT, gameSpeed * 2.2),
+        { moveDir: rand(-1, 1) },
+        {
+          update() {
+            powerUpBox.move(0, powerUpBox.moveDir * 2);
+            if (powerUpBox.pos.y < 50 || powerUpBox.pos.y > height() - 100) {
+              powerUpBox.moveDir *= -1;
+            }
+          }
         }
-      });
-      wait(rand(33, 45), spawnPowerUp);
+      ]);
+      wait(rand(40, 65), spawnPowerUp);
     }
     __name(spawnPowerUp, "spawnPowerUp");
     function activatePowerUp(type) {
+      let message = "";
+      console.log("Activating power-up: " + type.name);
       switch (type.name) {
         case "quarterSpeed":
+          message = "QUARTER SPEED!";
           const quarterSpeed = gameSpeed * 0.25;
           gameSpeed = quarterSpeed;
-          wait(type.duration, () => gameSpeed = gameSpeed / 0.25);
+          activeEffects["quarterSpeed"] = true;
+          showPowerUpMessage(message);
+          wait(type.duration, () => {
+            gameSpeed = gameSpeed / 0.25;
+            delete activeEffects["quarterSpeed"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "halfSpeed":
+          message = "HALF SPEED!";
           const halfSpeed = gameSpeed * 0.5;
           gameSpeed = halfSpeed;
-          wait(type.duration, () => gameSpeed = gameSpeed / 0.5);
+          activeEffects["halfSpeed"] = true;
+          showPowerUpMessage(message);
+          wait(type.duration, () => {
+            gameSpeed = gameSpeed / 0.5;
+            delete activeEffects["halfSpeed"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "immunity":
           immunityHits = 2;
+          activeEffects["immunity"] = true;
+          updateImmunityMessage();
           break;
         case "doubleSpeed":
+          message = "DOUBLE SPEED!";
           const doubleSpeed = gameSpeed * 2;
           gameSpeed = doubleSpeed;
-          wait(type.duration, () => gameSpeed = gameSpeed / 2);
+          activeEffects["doubleSpeed"] = true;
+          showPowerUpMessage(message);
+          wait(type.duration, () => {
+            gameSpeed = gameSpeed / 2;
+            delete activeEffects["doubleSpeed"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "spawnLasers":
+          message = "LASERS ACTIVE!";
           lasersActive = true;
-          wait(type.duration, () => lasersActive = false);
+          activeEffects["lasers"] = true;
+          showPowerUpMessage(message);
+          spawnLaser();
+          wait(type.duration, () => {
+            lasersActive = false;
+            delete activeEffects["lasers"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "spawnBullets":
+          message = "BULLETS ACTIVE!";
           bulletsActive = true;
-          wait(type.duration, () => bulletsActive = false);
+          activeEffects["bullets"] = true;
+          showPowerUpMessage(message);
+          spawnBullet();
+          wait(type.duration, () => {
+            bulletsActive = false;
+            delete activeEffects["bullets"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "doubleScore":
+          message = "DOUBLE SCORE!";
           scoreMultiplier = 2;
-          wait(type.duration, () => scoreMultiplier = 1);
+          activeEffects["doubleScore"] = true;
+          showPowerUpMessage(message);
+          wait(type.duration, () => {
+            scoreMultiplier = 1;
+            delete activeEffects["doubleScore"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
         case "tripleScore":
+          message = "TRIPLE SCORE!";
           scoreMultiplier = 3;
-          wait(type.duration, () => scoreMultiplier = 1);
+          activeEffects["tripleScore"] = true;
+          showPowerUpMessage(message);
+          wait(type.duration, () => {
+            scoreMultiplier = 1;
+            delete activeEffects["tripleScore"];
+            if (Object.keys(activeEffects).length === 0) {
+              hidePowerUpMessage();
+            } else if (immunityHits > 0) {
+              updateImmunityMessage();
+            }
+          });
           break;
       }
     }
@@ -2468,7 +2734,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       pipe.move(-gameSpeed, 0);
       if (pipe.passed === false && pipe.pos.x < player.pos.x) {
         pipe.passed = true;
-        score += 1;
+        score += 1 * scoreMultiplier;
         scoreText.text = score;
         gameSpeed += 9;
         play("point");
@@ -2500,7 +2766,7 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         "laser",
         move(DOWN, 400)
       ]);
-      wait(rand(1, 3.5), spawnLaser);
+      wait(rand(1, 3), spawnLaser);
     }
     __name(spawnLaser, "spawnLaser");
     function spawnBullet() {
@@ -2511,31 +2777,44 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
         pos(width(), rand(50, height() - 50)),
         area(),
         "bullet",
-        move(LEFT, 3500)
+        move(LEFT, 3e3)
       ]);
       wait(rand(1.5, 4), spawnBullet);
     }
     __name(spawnBullet, "spawnBullet");
     player.collides("bullet", () => {
+      if (immunityHits > 0) {
+        immunityHits--;
+        updateImmunityMessage();
+        return;
+      }
       play("hit");
       go("gameover", score);
     });
     player.collides("laser", () => {
+      if (immunityHits > 0) {
+        immunityHits--;
+        updateImmunityMessage();
+        return;
+      }
       play("hit");
       go("gameover", score);
     });
     player.collides("pipe", () => {
       if (immunityHits > 0) {
         immunityHits--;
+        updateImmunityMessage();
         return;
       }
       play("hit");
       go("gameover", score);
     });
     player.collides("powerup", (p) => {
-      activatePowerUp(p.type);
+      const powerupType = p.type;
       destroy(p);
+      activatePowerUp(powerupType);
       play("point");
+      console.log("Collected power-up!");
     });
     player.action(() => {
       if (player.pos.y > height() + 30 || player.pos.y < -30) {
@@ -2552,12 +2831,57 @@ vec4 frag(vec3 pos, vec2 uv, vec4 color, sampler2D tex) {
       highScore = score;
     }
     add([
-      text("gameover! press space to try again!\nscore: " + score + "\nhigh score: " + highScore, { size: 35 })
+      sprite("bg", { width: width(), height: height() })
     ]);
+    add([
+      text("GAME OVER!\n\nSCORE: " + score + "\nHIGH SCORE: " + highScore + "\n\nPress SPACE to try again\nPress ESC for menu", {
+        size: 35,
+        width: width() - 100,
+        align: "center"
+      }),
+      pos(width() / 2, height() / 2),
+      origin("center"),
+      color(255, 255, 255)
+    ]);
+    const menuBtn = add([
+      text("MENU", { size: 28 }),
+      pos(width() / 4, height() - 80),
+      origin("center"),
+      color(255, 100, 100)
+    ]);
+    const retryBtn = add([
+      text("TRY AGAIN", { size: 28 }),
+      pos(width() * 3 / 4, height() - 80),
+      origin("center"),
+      color(0, 255, 0)
+    ]);
+    mouseClick(() => {
+      if (mousePos().x > menuBtn.pos.x - 50 && mousePos().x < menuBtn.pos.x + 50 && mousePos().y > menuBtn.pos.y - 20 && mousePos().y < menuBtn.pos.y + 20) {
+        go("menu");
+      }
+      if (mousePos().x > retryBtn.pos.x - 75 && mousePos().x < retryBtn.pos.x + 75 && mousePos().y > retryBtn.pos.y - 20 && mousePos().y < retryBtn.pos.y + 20) {
+        go("game");
+      }
+    });
+    action(() => {
+      if (mousePos().x > menuBtn.pos.x - 50 && mousePos().x < menuBtn.pos.x + 50 && mousePos().y > menuBtn.pos.y - 20 && mousePos().y < menuBtn.pos.y + 20) {
+        menuBtn.scale = vec2(1.1);
+      } else {
+        menuBtn.scale = vec2(1);
+      }
+      if (mousePos().x > retryBtn.pos.x - 75 && mousePos().x < retryBtn.pos.x + 75 && mousePos().y > retryBtn.pos.y - 20 && mousePos().y < retryBtn.pos.y + 20) {
+        retryBtn.scale = vec2(1.1);
+      } else {
+        retryBtn.scale = vec2(1);
+      }
+    });
     keyPress("space", () => {
       go("game");
     });
+    keyPress("escape", () => {
+      go("menu");
+    });
   });
-  go("game");
+  go("menu");
 })();
 //# sourceMappingURL=game.js.map
