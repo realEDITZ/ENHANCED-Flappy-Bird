@@ -44,14 +44,23 @@ scene("game", () => {
       { name: "spawnBullets", chance: 0.1, duration: 5 }
     ];
 
-    add([
-      sprite("box"),
-      pos(width(), rand(50, height() - 100)),
-      area(),
-      "powerup",
-      { type: choose(powerUps) },
-      move(LEFT, gameSpeed)
-    ]);
+    const powerUpBox = add([
+        sprite("box"),
+        pos(width(), rand(50, height() - 100)),
+        area(),
+        "powerup",
+        { type: choose(powerUps) },
+        move(LEFT, gameSpeed * 1.5),
+        { moveDir: rand(-1, 1) }
+      ]);
+
+      // Add vertical movement
+      powerUpBox.onUpdate(() => {
+        powerUpBox.move(0, powerUpBox.moveDir * 2);
+        if (powerUpBox.pos.y < 50 || powerUpBox.pos.y > height() - 100) {
+          powerUpBox.moveDir *= -1;
+        }
+      });
 
     wait(rand(33, 45), spawnPowerUp);
   }
