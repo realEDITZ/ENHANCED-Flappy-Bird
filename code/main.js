@@ -30,11 +30,11 @@ scene("game", () => {
   let bulletThreshold = rand(38, 55);
   let bulletsActive = false;
   let immunityHits = 0;
-  
+
   // Power-up system
   function spawnPowerUp() {
     if (!player.exists()) return;
-    
+
     const powerUps = [
       { name: "quarterSpeed", chance: 0.25, duration: 15 },
       { name: "halfSpeed", chance: 0.25, duration: 10 },
@@ -43,7 +43,7 @@ scene("game", () => {
       { name: "spawnLasers", chance: 0.1, duration: 5 },
       { name: "spawnBullets", chance: 0.1, duration: 5 }
     ];
-    
+
     add([
       sprite("box"),
       pos(width(), rand(50, height() - 100)),
@@ -52,37 +52,48 @@ scene("game", () => {
       { type: choose(powerUps) },
       move(LEFT, gameSpeed)
     ]);
-    
+
     wait(rand(23, 40), spawnPowerUp);
   }
 
   function activatePowerUp(type) {
-    switch(type.name) {
-      case "quarterSpeed":
-        gameSpeed = baseSpeed * 0.25;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "halfSpeed":
-        gameSpeed = baseSpeed * 0.5;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "immunity":
-        immunityHits = 2;
-        break;
-      case "doubleSpeed":
-        gameSpeed = baseSpeed * 2;
-        wait(type.duration, () => gameSpeed = baseSpeed);
-        break;
-      case "spawnLasers":
-        lasersActive = true;
-        wait(type.duration, () => lasersActive = false);
-        break;
-      case "spawnBullets":
-        bulletsActive = true;
-        wait(type.duration, () => bulletsActive = false);
-        break;
+      switch(type.name) {
+        case "quarterSpeed":
+          const quarterSpeed = gameSpeed * 0.25;
+          gameSpeed = quarterSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 0.25);
+          break;
+        case "halfSpeed":
+          const halfSpeed = gameSpeed * 0.5;
+          gameSpeed = halfSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 0.5);
+          break;
+        case "immunity":
+          immunityHits = 2;
+          break;
+        case "doubleSpeed":
+          const doubleSpeed = gameSpeed * 2;
+          gameSpeed = doubleSpeed;
+          wait(type.duration, () => gameSpeed = gameSpeed / 2);
+          break;
+        case "spawnLasers":
+          lasersActive = true;
+          wait(type.duration, () => lasersActive = false);
+          break;
+        case "spawnBullets":
+          bulletsActive = true;
+          wait(type.duration, () => bulletsActive = false);
+          break;
+        case "doubleScore":
+          scoreMultiplier = 2;
+          wait(type.duration, () => scoreMultiplier = 1);
+          break;
+        case "tripleScore":
+          scoreMultiplier = 3;
+          wait(type.duration, () => scoreMultiplier = 1);
+          break;
+      }
     }
-  }
 
   // Function to calculate pipe gap based on score
   function getPipeGap() {
@@ -136,7 +147,7 @@ scene("game", () => {
   loop(1.5, () => {
     producePipes();
   });
-  
+
   // Start spawning power-ups
   wait(5, spawnPowerUp);
 
@@ -149,20 +160,20 @@ scene("game", () => {
       scoreText.text = score;
       gameSpeed += 9; // Increase speed with each point
       play("point");
-      
+
       if (score >= bulletThreshold && !bulletsActive) {
         bulletsActive = true;
         spawnBullet();
       }
-      
+
       if (score >= laserThreshold && !lasersActive) {
         lasersActive = true;
         spawnLaser();
-        
+
         // Set timer to deactivate lasers
         wait(laserDuration, () => {
           lasersActive = false;
-          
+
           // Wait break duration then restart with increased duration
           wait(breakDuration, () => {
             laserDuration += rand(10, 30); // Increase duration
@@ -176,7 +187,7 @@ scene("game", () => {
 
   function spawnLaser() {
     if (!lasersActive) return;
-    
+
     add([
       sprite("LAZAR"),
       pos(rand(0, width()), 0),
@@ -190,7 +201,7 @@ scene("game", () => {
 
   function spawnBullet() {
     if (!bulletsActive) return;
-    
+
     add([
       sprite("burdy"),
       pos(width(), rand(50, height() - 50)),
