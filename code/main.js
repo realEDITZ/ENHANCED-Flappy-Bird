@@ -18,7 +18,6 @@ loadSound("hit", "sounds/hit.wav");
 
 
 let highScore = 0;
-let scoreMultiplier = 1; // Initialize score multiplier
 
 scene("game", () => {
   let score = 0;
@@ -31,21 +30,20 @@ scene("game", () => {
   let bulletThreshold = rand(38, 55);
   let bulletsActive = false;
   let immunityHits = 0;
-
+  
   // Power-up system
   function spawnPowerUp() {
     if (!player.exists()) return;
-
+    
     const powerUps = [
       { name: "quarterSpeed", chance: 0.25, duration: 15 },
       { name: "halfSpeed", chance: 0.25, duration: 10 },
+      { name: "immunity", chance: 0.15, duration: 0 },
       { name: "doubleSpeed", chance: 0.15, duration: 7 },
-      { name: "doubleScore", chance: 0.15, duration: 15 }, // Added double score power-up
-      { name: "tripleScore", chance: 0.15, duration: 7 },  // Added triple score power-up
       { name: "spawnLasers", chance: 0.1, duration: 5 },
       { name: "spawnBullets", chance: 0.1, duration: 5 }
     ];
-
+    
     add([
       sprite("box"),
       pos(width(), rand(50, height() - 100)),
@@ -54,46 +52,37 @@ scene("game", () => {
       { type: choose(powerUps) },
       move(LEFT, gameSpeed)
     ]);
-
+    
     wait(rand(23, 40), spawnPowerUp);
   }
 
   function activatePowerUp(type) {
-      const currentSpeed = gameSpeed;
-      switch(type.name) {
-        case "quarterSpeed":
-          gameSpeed = currentSpeed * 0.25;
-          wait(type.duration, () => gameSpeed = currentSpeed);
-          break;
-        case "halfSpeed":
-          gameSpeed = currentSpeed * 0.5;
-          wait(type.duration, () => gameSpeed = currentSpeed);
-          break;
-        case "immunity":
-          immunityHits = 2;
-          break;
-        case "doubleSpeed":
-          gameSpeed = currentSpeed * 2;
-          wait(type.duration, () => gameSpeed = currentSpeed);
-          break;
-        case "spawnLasers":
-          lasersActive = true;
-          wait(type.duration, () => lasersActive = false);
-          break;
-        case "spawnBullets":
-          bulletsActive = true;
-          wait(type.duration, () => bulletsActive = false);
-          break;
-        case "doubleScore":
-          scoreMultiplier = 2;
-          wait(type.duration, () => scoreMultiplier = 1);
-          break;
-        case "tripleScore":
-          scoreMultiplier = 3;
-          wait(type.duration, () => scoreMultiplier = 1);
-          break;
-      }
+    switch(type.name) {
+      case "quarterSpeed":
+        gameSpeed = baseSpeed * 0.25;
+        wait(type.duration, () => gameSpeed = baseSpeed);
+        break;
+      case "halfSpeed":
+        gameSpeed = baseSpeed * 0.5;
+        wait(type.duration, () => gameSpeed = baseSpeed);
+        break;
+      case "immunity":
+        immunityHits = 2;
+        break;
+      case "doubleSpeed":
+        gameSpeed = baseSpeed * 2;
+        wait(type.duration, () => gameSpeed = baseSpeed);
+        break;
+      case "spawnLasers":
+        lasersActive = true;
+        wait(type.duration, () => lasersActive = false);
+        break;
+      case "spawnBullets":
+        bulletsActive = true;
+        wait(type.duration, () => bulletsActive = false);
+        break;
     }
+  }
 
   // Function to calculate pipe gap based on score
   function getPipeGap() {
@@ -147,7 +136,7 @@ scene("game", () => {
   loop(1.5, () => {
     producePipes();
   });
-
+  
   // Start spawning power-ups
   wait(5, spawnPowerUp);
 
@@ -156,24 +145,24 @@ scene("game", () => {
 
     if (pipe.passed === false && pipe.pos.x < player.pos.x) {
       pipe.passed = true;
-      score += (1 * scoreMultiplier); // Updated score calculation
+      score += 1;
       scoreText.text = score;
       gameSpeed += 9; // Increase speed with each point
       play("point");
-
+      
       if (score >= bulletThreshold && !bulletsActive) {
         bulletsActive = true;
         spawnBullet();
       }
-
+      
       if (score >= laserThreshold && !lasersActive) {
         lasersActive = true;
         spawnLaser();
-
+        
         // Set timer to deactivate lasers
         wait(laserDuration, () => {
           lasersActive = false;
-
+          
           // Wait break duration then restart with increased duration
           wait(breakDuration, () => {
             laserDuration += rand(10, 30); // Increase duration
@@ -187,7 +176,7 @@ scene("game", () => {
 
   function spawnLaser() {
     if (!lasersActive) return;
-
+    
     add([
       sprite("LAZAR"),
       pos(rand(0, width()), 0),
@@ -201,7 +190,7 @@ scene("game", () => {
 
   function spawnBullet() {
     if (!bulletsActive) return;
-
+    
     add([
       sprite("burdy"),
       pos(width(), rand(50, height() - 50)),
